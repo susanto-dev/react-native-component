@@ -27,7 +27,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-          cache: maven
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v4
         with:
