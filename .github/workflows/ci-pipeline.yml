@@ -6,10 +6,10 @@ on:
 #      component:
 #        required: true
 #        default: ""
-  push:
+#  push:
 #    branches:
 #      - main
-#  pull_request:
+  pull_request:
 #    branches:
 #      - main
 
