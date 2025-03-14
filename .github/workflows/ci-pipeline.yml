@@ -1,0 +1,63 @@
+name: CI pipeline
+
+on:
+#  workflow_call:
+#    inputs:
+#      component:
+#        required: true
+#        default: ""
+  push:
+#    branches:
+#      - main
+#  pull_request:
+#    branches:
+#      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.4xx'
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.1.11
+        with:
+          versionSpec: '6.0.x'
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3.1.11
+        with:
+           useConfigFile: true
+           configFilePath: GitVersion/GitVersion.yml
+      - name: Update version
+        run: mvn versions:set-property -Dproperty=revision -DnewVersion=${{ steps.gitversion.outputs.SemVer }} -DgenerateBackupPoms=false
+
+      - name: Build Complete with Maven
+        shell: bash
+        run: |
+           chmod +x ./mvnw
+           ./mvnw --batch-mode clean package
+
+      - name: Publish to github packages
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+           chmod +x ./mvnw
+           ./mvnw --batch-mode deploy
+
