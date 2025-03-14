@@ -71,4 +71,4 @@ jobs:
         run: |
           cd android
           chmod +x ./gradlew
-          gradlew assembleRelease --no-daemon
+          ./gradlew assembleRelease --no-daemon
