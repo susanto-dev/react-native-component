@@ -4,10 +4,12 @@ on:
   pull_request:
     branches:
       - main
-
+permissions:
+  contents: read
+  actions: read
 jobs:
   pipeline:
-   used: susanto-dev/devops-infra/.github/workflows/pr-pipeline.yml
+   uses: susanto-dev/devops-infra/.github/workflows/pr-pipeline.yml@develop
    secrets: inherit
    with:
      component: 'react-native'
