@@ -19,3 +19,28 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+apply plugin: "maven-publish"
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = "com.android" 
+            artifactId = "your-app"
+            version = project.hasProperty("APK_VERSION")
+
+            artifact("$buildDir/outputs/apk/release/app-release.apk") {
+                classifier "apk"
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHub Packages"
+            url = uri("https://maven.pkg.github.com/susanto-dev/java-component")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
