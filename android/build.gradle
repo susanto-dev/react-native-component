@@ -49,5 +49,5 @@ ext {
         mavenversion = project.findProperty("APK_VERSION")
 }
 dependencies {
-    implementation 'com.android:your-app:${mavenversion}'
+    implementation 'com.android:your-app:${project.ext.mavenversion}'
 }
