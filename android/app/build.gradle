@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply plugin: "maven-publish"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -123,6 +124,31 @@ dependencies {
         implementation jscFlavor
     }
 }
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = "com.android"
+            artifactId = "your-app"
+            version = project.findProperty("APK_VERSION")
+
+            artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
+                classifier "apk"
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/susanto-dev/java-component")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
 dependencies {
-    implementation("com.android:your-app")
+    implementation 'com.android:your-app'
 }
