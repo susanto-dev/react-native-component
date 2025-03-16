@@ -123,3 +123,6 @@ dependencies {
         implementation jscFlavor
     }
 }
+dependencies {
+    implementation("com.android:your-app")
+}

@@ -44,7 +44,3 @@ publishing {
         }
     }
 }
-
-dependencies {
-    implementation 'com.android:your-app'
-}
