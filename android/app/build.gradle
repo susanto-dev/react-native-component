@@ -112,7 +112,18 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-repositories {
+  publishing {
+   publications {
+    bar(MavenPublication) {
+      groupId 'com.android'
+      artifactId getArtificatId()
+      version getVersionName()
+      artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
+                classifier "apk"
+            }
+    }
+  }
+  repositories {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/susanto-dev/react-native-component")
@@ -122,8 +133,6 @@ repositories {
             }
         }
     }
-
-
 }
 
 dependencies {
