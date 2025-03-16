@@ -118,7 +118,7 @@ publishing {
     publications {
         bar(MavenPublication) {
             groupId 'com.android'
-            artifactId 'your-app'
+            artifactId 'react_native_ui_templates'
             version project.findProperty("APK_VERSION")
             artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
                 classifier "apk"
@@ -139,7 +139,7 @@ publishing {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    implementation("com.android:your-app:+")
+    implementation("com.android:react_native_ui_templates:+")
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
