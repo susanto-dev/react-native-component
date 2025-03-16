@@ -44,10 +44,3 @@ publishing {
         }
     }
 }
-
-ext {
-        mavenversion = project.findProperty("APK_VERSION")
-}
-dependencies {
-    implementation 'com.android:your-app:${mavenversion}'
-}
