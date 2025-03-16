@@ -2,10 +2,10 @@ name: CI pipeline
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - README.md
+#    branches:
+#      - main
+#    paths-ignore:
+#      - README.md
 
 
 jobs:
