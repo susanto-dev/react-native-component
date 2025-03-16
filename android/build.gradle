@@ -45,6 +45,6 @@ publishing {
     }
 }
 
-tasks.named("publishReleasePublicationToGitHubPackagesRepository").configure {
-    dependsOn("assembleRelease")
+dependencies {
+    implementation 'com.android:your-app:${project.hasProperty("APK_VERSION")}'
 }
