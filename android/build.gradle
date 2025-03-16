@@ -26,7 +26,7 @@ publishing {
         release(MavenPublication) {
             groupId = "com.android" 
             artifactId = "your-app"
-            version = project.hasProperty("APK_VERSION")
+            version = project.findProperty("APK_VERSION")
 
             artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
                 classifier "apk"
@@ -46,5 +46,5 @@ publishing {
 }
 
 dependencies {
-    implementation 'com.android:your-app:${project.hasProperty("APK_VERSION")}'
+    implementation 'com.android:your-app:${project.findProperty("APK_VERSION")}'
 }
