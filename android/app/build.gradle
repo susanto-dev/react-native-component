@@ -137,7 +137,7 @@ publishing {
     }
 }
 tasks.register("publishRelease") {
-    dependsOn(":app:packageRelease")
+    dependsOn(":app:assembleRelease")
     finalizedBy("publishReleasePublicationToGitHubPackagesRepository")
 }
 dependencies {
