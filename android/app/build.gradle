@@ -116,13 +116,8 @@ android {
 
 publishing {
     publications {
-        bar(MavenPublication) {
-            groupId 'com.android'
-            artifactId 'react_native_ui_templates'
-            version project.findProperty("APK_VERSION")
-            artifact("$buildDir/outputs/aar/react_native_ui_templates-release.aar") {
-                classifier "apk"
-            }
+        gpr(MavenPublication) {
+            from(components.java)
         }
     }
     repositories {
@@ -136,10 +131,7 @@ publishing {
         }
     }
 }
-tasks.register("publishRelease") {
-    dependsOn(":app:assembleRelease")
-    finalizedBy("publishReleasePublicationToGitHubPackagesRepository")
-}
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
