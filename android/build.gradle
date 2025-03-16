@@ -6,7 +6,6 @@ buildscript {
         targetSdkVersion = 35
         ndkVersion = "27.1.12297006"
         kotlinVersion = "2.0.21"
-        mavenversion = project.findProperty("APK_VERSION")
     }
     repositories {
         google()
@@ -46,6 +45,9 @@ publishing {
     }
 }
 
+ext {
+        mavenversion = project.findProperty("APK_VERSION")
+}
 dependencies {
     implementation 'com.android:your-app:${mavenversion}'
 }
