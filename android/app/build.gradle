@@ -114,10 +114,12 @@ android {
     }
 }
 
-publishing {
+
+afterEvaluate {
+ publishing {
     publications {
-        gpr(MavenPublication) {
-            from(components.android)
+      release(MavenPublication) {
+         from components.findByName('release')
          groupId 'com.android'
             artifactId 'react_native_ui_templates'
             version project.findProperty("APK_VERSION")
@@ -133,6 +135,7 @@ publishing {
             }
         }
     }
+  }
 }
 
 dependencies {
