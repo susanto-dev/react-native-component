@@ -120,7 +120,7 @@ publishing {
             groupId 'com.android'
             artifactId 'react_native_ui_templates'
             version project.findProperty("APK_VERSION")
-            artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
+            artifact("$buildDir/outputs/aar/react_native_ui_templates-release.aar") {
                 classifier "apk"
             }
         }
