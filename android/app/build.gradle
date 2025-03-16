@@ -112,6 +112,9 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+}
+
+
   publishing {
    publications {
     bar(MavenPublication) {
@@ -133,7 +136,6 @@ android {
             }
         }
     }
-}
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
