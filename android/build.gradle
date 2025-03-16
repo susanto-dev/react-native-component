@@ -28,7 +28,7 @@ publishing {
             artifactId = "your-app"
             version = project.hasProperty("APK_VERSION")
 
-            artifact("$buildDir/outputs/apk/release/app-release.apk") {
+            artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
                 classifier "apk"
             }
         }
