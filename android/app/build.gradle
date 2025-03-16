@@ -114,13 +114,12 @@ android {
     }
 }
 
-
 publishing {
     publications {
         bar(MavenPublication) {
             groupId 'com.android'
-            artifactId getArtificatId()
-            version getVersionName()
+            artifactId 'your-app'
+            version project.findProperty("APK_VERSION")
             artifact("$project.projectDir/app/build/outputs/apk/release/app-release.apk") {
                 classifier "apk"
             }
