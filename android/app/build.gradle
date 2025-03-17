@@ -114,6 +114,10 @@ android {
     }
 }
 
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set("sources")
+}
 
 afterEvaluate {
  publishing {
@@ -123,10 +127,11 @@ afterEvaluate {
             groupId 'com.android'
             artifactId 'react_native_ui_templates'
             version project.findProperty("APK_VERSION")
-            artifact("$buildDir/outputs/aar/react_native_ui_templates-release.aar") {
+            artifact sourceJar
+            artifact("$buildDir/outputs/aar/app-release.aar") {
                 classifier "aar"
             }
-            artifact("$buildDir/outputs/aar/react_native_ui_templates-release.apk") {
+            artifact("$buildDir/outputs/aar/app-release.apk") {
                 classifier "apk"
             }
         }
