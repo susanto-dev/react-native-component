@@ -124,7 +124,7 @@ afterEvaluate {
  publishing {
     publications {
       maven(MavenPublication) {
-         from components.release
+         from components.findByName("release")
          groupId 'com.android'
          artifactId 'react_native_ui_templates'
          version project.findProperty("APK_VERSION")
