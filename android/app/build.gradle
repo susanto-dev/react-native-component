@@ -132,7 +132,7 @@ afterEvaluate {
             artifact("${project.buildDir}/outputs/aar/app-release.aar") {
                 classifier "aar"
             }
-            artifact("${project.buildDir}/outputs/aar/app-release.apk") {
+            artifact("${project.buildDir}/outputs/apk/app-release.apk") {
                 classifier "apk"
             }
         }
