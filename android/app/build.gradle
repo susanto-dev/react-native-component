@@ -114,7 +114,6 @@ android {
     }
 }
 
-
 afterEvaluate {
  publishing {
     publications {
