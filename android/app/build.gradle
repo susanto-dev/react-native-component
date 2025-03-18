@@ -114,29 +114,6 @@ android {
     }
 }
 
-afterEvaluate {
- publishing {
-    publications {
-      maven(MavenPublication) {
-         from components.findByName("release")
-         groupId 'com.example'
-         artifactId 'react-native-component'
-         version project.findProperty("APK_VERSION")
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/susanto-dev/react-native-component")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-  }
-}
-
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
