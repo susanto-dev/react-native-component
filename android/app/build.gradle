@@ -114,23 +114,15 @@ android {
     }
 }
 
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    archiveClassifier.set("sources")
-}
 
 afterEvaluate {
  publishing {
     publications {
       maven(MavenPublication) {
          from components.findByName("release")
-         groupId 'com.android'
-         artifactId 'react_native_ui_templates'
+         groupId 'com.example'
+         artifactId 'react-native-component'
          version project.findProperty("APK_VERSION")
-         artifact sourceJar
-         artifact("${project.buildDir}/outputs/aar/app.aar") {
-            classifier "aar"
-         }
         }
     }
     repositories {
