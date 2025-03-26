@@ -2,10 +2,10 @@ name: CI pipeline
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - README.md
+#    branches:
+#      - main
+#    paths-ignore:
+#      - README.md
 
 
 jobs:
@@ -15,32 +15,32 @@ jobs:
    with:
      component: 'react-native'
 
-  deploy-to-dev:
-   needs: [build]
-   uses: susanto-dev/devops-infra/.github/workflows/cd.yml@develop
-   secrets: inherit
-   with:
-     repository: 'react-native-component'
-     version: '${{ needs.build.outputs.build_version }}'
-     environment: 'dev'
-     component: 'react-native'
-
-  deploy-to-uat:
-   needs: [build]
-   uses: susanto-dev/devops-infra/.github/workflows/cd.yml@develop
-   secrets: inherit
-   with:
-     repository: 'react-native-component'
-     version: '${{ needs.build.outputs.build_version }}'
-     environment: 'uat'
-     component: 'react-native'
-
-  deploy-to-prod:
-   needs: [build]
-   uses: susanto-dev/devops-infra/.github/workflows/cd.yml@develop
-   secrets: inherit
-   with:
-     repository: 'react-native-component'
-     version: '${{ needs.build.outputs.build_version }}'
-     environment: 'prod'
-     component: 'react-native'
+#  deploy-to-dev:
+#   needs: [build]
+#   uses: susanto-dev/devops-infra/.github/workflows/cd.yml@develop
+#   secrets: inherit
+#   with:
+#     repository: 'react-native-component'
+#     version: '${{ needs.build.outputs.build_version }}'
+#     environment: 'dev'
+#     component: 'react-native'
+#
+#  deploy-to-uat:
+#   needs: [build]
+#   uses: susanto-dev/devops-infra/.github/workflows/cd.yml@develop
+#   secrets: inherit
+#   with:
+#     repository: 'react-native-component'
+#     version: '${{ needs.build.outputs.build_version }}'
+#     environment: 'uat'
+#     component: 'react-native'
+#
+#  deploy-to-prod:
+#   needs: [build]
+#   uses: susanto-dev/devops-infra/.github/workflows/cd.yml@develop
+#   secrets: inherit
+#   with:
+#     repository: 'react-native-component'
+#     version: '${{ needs.build.outputs.build_version }}'
+#     environment: 'prod'
+#     component: 'react-native'
